@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="Ebix" />
+	<link rel="shortcut icon" href="favicon.ico">
+    <title>CICM - Centralização de Comissões</title>
+
+    <!-- Bootstrap -->    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Estilo CSS -->
+    <link rel="stylesheet" href="css/estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Datepicker -->
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+	<!-- Icons -->
+	<!-- Font Awesome JS
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script> -->
+	<link rel="stylesheet" href="css/docs.min.css">
+    <link rel="stylesheet" href="css/bradseg_icons.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="img/logo-cicm.png">
+            </div>
+
+            <ul class="list-unstyled components">
+                    <div class="breadcrumb">
+                        <a href="#">Home</a><i class="icon icon-seta-ponta-direita"></i>
+                        <a href="#">SCRR</a><i class="icon icon-seta-ponta-direita"></i>
+                        <a href="#">Reenvio</a><i class="icon icon-seta-ponta-direita"></i>
+                        <a href="#">CS. Reenviados</a>
+                    </div>
+                    <li class="animation-to-right">
+                        <a href="#scrrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-fin-transferencia mr-4"></i> <span class="item-menu">Reenviar</span></a>
+                    </li>
+                    <li class="active selecionado animation-to-right">
+                        <a href="#scrrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-fin-deposito-cheque mr-4"></i> <span class="item-menu">CS. Reenviados</span></a>
+                    </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+            
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>CS. Reenviados</h4>
+                    </div>
+                </div>
+                <div class="clearfix space-2"></div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="bg-blank">
+                            <h6>Consultar Reenviados</h6>
+                            <form>
+                                <div class="form-row">
+                                    <div class="col-12 col-xl-5">
+                                        <div class="form-group input-group date form_datetime" data-date-format="dd/mm/yyyy" data-link-field="dtp_input1">
+                                            <div class="form">
+                                                <input class="form-control date form_date input-date" size="16" type="text" value="" maxlength="10" name="dtp_input1" onkeypress="mascaraData(this, event)" placeholder="" autocomplete="off" required="">
+                                                <label for="text" class="label-name">
+                                                    <span class="content-name">
+                                                        <span class="icon-doc-calendario icones" aria-hidden="true"></span>
+                                                        <span>Data Reenvio</span>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-xl-7 form">                                        
+                                        <div class="form-select">
+                                            <span><i class="icon icon-info-endereco mr-1"></i> Status Reenvio</span>
+                                            <select class="form-control">                                                                                                                                            
+                                                <option></option>
+                                                <option>132</option>
+                                                <option>132</option>
+                                                <option>132</option>
+                                            </select>
+                                        </div>
+                                    </div>                                    
+                                    <div class="col-12 col-xl-12 pt-50">
+                                        <div class="buttons float-right">                                            
+                                            <button type="button" name="button" class="btn btn-primary">Consultar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix space"></div>	
+			</div> <!-- Fim container-fluid -->
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="js/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- Popper.JS -->
+    <script src="js/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- Script Toggle -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    
+    <!-- Script Tooltip -->
+    <script>
+        jQuery(function() {
+        jQuery('[data-toggle="tooltip"]').tooltip();
+        })
+	</script>
+    
+    <!-- Script Popover -->
+	<script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+
+        $("[data-toggle=popover]")
+        .popover({html:true})
+    </script>
+    
+    <!-- Script Datepicker-->
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
+    <script type="text/javascript">
+       $('.form_date').datetimepicker({
+         language:  'pt-BR',
+         autoclose: 1,
+         minView: 2,
+         format: "dd/mm/yyyy"
+         });
+    </script>
+    <script>
+       // Máscara formato data no campo date 99/99/9999
+       function mascaraData(campo, e){
+         var kC = (document.all) ? event.keyCode : e.keyCode;
+         var data = campo.value;
+         if( kC!=8 && kC!=46 ){
+           if( data.length==2 ){
+             campo.value = data += '/';
+           }else if( data.length==5){
+           campo.value = data += '/';
+         }else
+       campo.value = data;
+       }
+     }
+    </script>
+</body>
+
+</html>

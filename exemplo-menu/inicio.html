@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="author" content="Ebix" />
+	<link rel="shortcut icon" href="favicon.ico">
+    <title>Início</title>
+
+    <!-- Bootstrap -->    
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <!-- Estilo CSS -->
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Datepicker -->
+    <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+	<!-- Icons -->
+	<!-- Font Awesome JS
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script> -->
+	<!-- <link rel="stylesheet" href="css/docs.css"> -->
+	<link rel="stylesheet" href="../css/bradseg_icons.css">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="../img/logo-cicm.png">
+            </div>
+            <ul class="list-unstyled components">
+                <div class="breadcrumb">
+                    <a href="inicio.html">Início</a>
+                </div>
+                <li class="animation-to-right">
+                    <a  onclick="window.location.href = 'exemplo-1.html'" href="" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-info-perfil-corretor2 mr-4"></i> <span class="item-menu">SCRR</span><span class="menu-sub"></span></a>
+                </li>
+                <li class="animation-to-right">
+                    <a onclick="window.location.href = 'exemplo-1.html'" href="#asseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-2a-via mr-4"></i> <span class="item-menu">ASSE</span><span class="menu-sub"></span></a>
+				</li>
+				<li class="animation-to-right">
+                    <a onclick="window.location.href = 'exemplo-1.html'" href="#cobpSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-vb-recompensas mr-4"></i> <span class="item-menu">COBP</span><span class="menu-sub"></span></a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content Holder -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="navbar-btn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+            
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="../js/jquery-3.3.1.slim.min.js"></script>
+
+    <!-- Popper.JS -->
+    <script src="../js/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap.min.js"></script>
+    
+    <!-- Script Toggle -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $(this).toggleClass('active');
+            });
+        });
+    </script>
+    
+    <!-- Script Tooltip -->
+    <script>
+        jQuery(function() {
+        jQuery('[data-toggle="tooltip"]').tooltip();
+        })
+	</script>
+    
+    <!-- Script Popover -->
+	<script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover();
+        });
+
+        $("[data-toggle=popover]")
+        .popover({html:true})
+	</script>
+</body>
+
+</html>
