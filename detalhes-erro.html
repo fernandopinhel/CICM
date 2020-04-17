@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="author" content="Ebix" />
 	<link rel="shortcut icon" href="favicon.ico">
-    <title>CICM - Centralização de Comissões</title>
+    <title>SCRR</title>
 
     <!-- Bootstrap -->    
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -38,24 +39,80 @@
 
             <ul class="list-unstyled components">
                 <div class="breadcrumb">
-                    <a href="#">Início</a><i class="icon icon-seta-ponta-direita"></i>
+                    <a href="#">Home</a><i class="icon icon-seta-ponta-direita"></i>
                     <a href="#">SCRR</a><i class="icon icon-seta-ponta-direita"></i>
                     <a href="#">Detalhe de Erro</a>
                 </div>
-                <li class="animation-to-right">
-                    <a href="#scrrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-papel mr-4"></i> <span class="item-menu">Resumo Proc.</span></a>
+                <li>
+                    <a href="#scrrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-info-perfil-corretor2 mr-4"></i> <span class="item-menu">SCRR</span></a>
+                    <ul class="collapse list-unstyled list-style-2 show" id="scrrSubmenu">
+                        <li>
+                            <a href="#"><i class="icon icon-doc-papel mr-4"></i> <span class="item-menu">Resumo Proc.</span></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="icon icon icon-doc-documento mr-4"></i> <span class="item-menu">CS_Movimento</span></a>
+                        </li>
+                        <li>
+                            <a href="#reenvioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-fin-resgate mr-4"></i> <span class="item-menu">Reenvio</span></a>
+                            <ul class="collapse list-unstyled list-style-3" id="reenvioSubmenu">
+                                <li><a href="#">Reenviar</a></li>
+                                <li><a href="#">CS. Reenviados</a></li>                                
+                            </ul>
+                        </li>
+                        <li  class="active selecionado">
+                            <a href="#"><i class="icon icon-doc-alerta mr-4"></i> <span class="item-menu">Detalhe de Erro</span></a>
+                        </li>
+                        <li>
+                            <a href="#relatoriosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-prancheta mr-4"></i> <span class="item-menu">Relatórios</span></a>
+                            <ul class="collapse list-unstyled list-style-3" id="relatoriosSubmenu">
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
-                <li class="animation-to-right">
-                    <a href="#scrrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-documento mr-4"></i> <span class="item-menu">CS_Movimento</span></a>
-                </li>
-                <li class="animation-to-right">
-                    <a href="#reenvioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-fin-resgate mr-4"></i> <span class="item-menu">Reenvio</span><span class="menu-sub"></span></span></a>
-                </li>
-                <li class="active selecionado animation-to-right">
-                    <a href="#scrrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-alerta mr-4"></i> <span class="item-menu">Detalhe de Erro</span></a>
-                </li>
-                <li class="animation-to-right">
-                    <a href="#relatoriosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-prancheta mr-4"></i> <span class="item-menu">Relatórios</span><span class="menu-sub"></span></a>
+                <li>
+                    <a href="#asseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-2a-via mr-4"></i> <span class="item-menu">ASSE</span></a>
+                    <ul class="collapse list-unstyled list-style-2" id="asseSubmenu">
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+						</li>
+						<li>
+							<a href="#asseSubmenu-2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="item-menu">4</span></a>
+							<ul class="collapse list-unstyled list-style-3" id="asseSubmenu-2">
+								<li>
+									<a href="#">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+							</ul>
+						</li>
+                    </ul>
+				</li>
+				<li>
+                    <a href="#cobpSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-vb-recompensas mr-4"></i> <span class="item-menu">COBP</span></a>
+                    <ul class="collapse list-unstyled list-style-2" id="cobpSubmenu">
+                        <li>
+                            <a href="#">1</a>
+                        </li>
+                        <li>
+                            <a href="#">2</a>
+                        </li>
+                        <li>
+                            <a href="#">3</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
@@ -70,13 +127,33 @@
                         <span></span>
                         <span></span>
                     </button>
+				   
+					<!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button> -->
+                    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div> -->
                 </div>
             </nav>
             
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        <h4>Detalhe de Erro</h4>
+                        <h4>SCRR</h4>
                     </div>
                 </div>
                 <div class="clearfix space-2"></div>
