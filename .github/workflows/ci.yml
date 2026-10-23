@@ -13,7 +13,7 @@ jobs:
     name: Validar HTML e regras da CSP
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: actions/setup-node@v5
@@ -49,7 +49,7 @@ jobs:
       run:
         working-directory: tests
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - uses: actions/setup-node@v5
