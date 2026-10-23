@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light dark">
+    <title>Painel · CICM</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/theme.js"></script>
+    <script type="module" src="js/pages/painel.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="topbar" id="topo"></header>
+
+    <main class="page" id="conteudo" tabindex="-1">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow" id="hoje"></p>
+          <h1 id="saudacao">Painel</h1>
+          <p>O que pede atenção nas comissões hoje e como andam as remessas das companhias.</p>
+        </div>
+        <div class="page-actions">
+          <a class="btn" href="reenvio.html">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-reenviar"></use></svg>
+            Reenviar movimentos
+          </a>
+          <a class="btn btn-primary" href="erros.html">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-erros"></use></svg>
+            Ver erros pendentes
+          </a>
+        </div>
+      </div>
+
+      <div class="stack">
+        <section aria-labelledby="kpis-titulo">
+          <h2 class="visually-hidden" id="kpis-titulo">Indicadores dos últimos 7 dias</h2>
+          <dl class="kpis" id="kpis"></dl>
+        </section>
+
+        <div class="grid grid-main">
+          <section class="panel" aria-labelledby="grafico-titulo">
+            <div class="panel-head">
+              <div>
+                <h2 id="grafico-titulo">Movimentos recebidos por dia</h2>
+                <p>Últimos 14 dias, separados pelo resultado da validação na carga.</p>
+              </div>
+              <ul class="legend">
+                <li><span class="swatch" aria-hidden="true"></span>Integrados na carga</li>
+                <li><span class="swatch bad" aria-hidden="true"></span>Rejeitados na carga</li>
+              </ul>
+            </div>
+            <div class="panel-body" id="grafico"></div>
+          </section>
+
+          <section class="panel" aria-labelledby="atencao-titulo">
+            <div class="panel-head">
+              <div>
+                <h2 id="atencao-titulo">Precisa de atenção</h2>
+                <p>Remessas e reenvios que ainda não terminaram bem.</p>
+              </div>
+            </div>
+            <ul class="list" id="atencao"></ul>
+          </section>
+        </div>
+
+        <div class="grid grid-2">
+          <section class="panel" aria-labelledby="top-erros-titulo">
+            <div class="panel-head">
+              <div>
+                <h2 id="top-erros-titulo">Erros mais frequentes</h2>
+                <p>Entre os movimentos rejeitados que ainda estão pendentes.</p>
+              </div>
+              <a class="btn btn-ghost btn-sm" href="relatorio.html">Relatório completo</a>
+            </div>
+            <ol class="list" id="top-erros"></ol>
+          </section>
+
+          <section class="panel" aria-labelledby="remessas-titulo">
+            <div class="panel-head">
+              <div>
+                <h2 id="remessas-titulo">Últimas remessas</h2>
+                <p>Arquivos recebidos das companhias.</p>
+              </div>
+              <a class="btn btn-ghost btn-sm" href="remessas.html">Todas as remessas</a>
+            </div>
+            <ul class="list" id="ultimas-remessas"></ul>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer" id="rodape"></footer>
+  </body>
+</html>

@@ -1,267 +1,129 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="pt-BR">
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="author" content="Ebix" />
-	<link rel="shortcut icon" href="favicon.ico">
-    <title>SCRR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light dark">
+    <title>Reenviar · CICM</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/theme.js"></script>
+    <script type="module" src="js/pages/reenvio.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="topbar" id="topo"></header>
 
-    <!-- Bootstrap -->    
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <!-- Estilo CSS -->
-    <link rel="stylesheet" href="css/estilo.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
-
-    <!-- Datepicker -->
-    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-
-	<!-- Icons -->
-	<!-- Font Awesome JS
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script> -->
-	<link rel="stylesheet" href="css/docs.min.css">
-    <link rel="stylesheet" href="css/bradseg_icons.css">
-
-</head>
-
-<body>
-    <div class="wrapper">
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <img src="img/logo-cicm.png">
-            </div>
-
-            <ul class="list-unstyled components">
-                    <div class="breadcrumb">
-                        <a href="#">Home</a><i class="icon icon-seta-ponta-direita"></i>
-                        <a href="#">SCRR</a><i class="icon icon-seta-ponta-direita"></i>
-                        <a href="#">Reenvio</a><i class="icon icon-seta-ponta-direita"></i>
-                        <a href="#">Reenviar</a>
-                    </div>
-                    <li>
-                        <a href="#scrrSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-info-perfil-corretor2 mr-4"></i> <span class="item-menu">SCRR</span></a>
-                        <ul class="collapse list-unstyled list-style-2 show" id="scrrSubmenu">
-                            <li>
-                                <a href="#"><i class="icon icon-doc-papel mr-4"></i> <span class="item-menu">Resumo Proc.</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon icon icon-doc-documento mr-4"></i> <span class="item-menu">CS_Movimento</span></a>
-                            </li>
-                            <li class="active">
-                                <a href="#reenvioSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-fin-resgate mr-4"></i> <span class="item-menu">Reenvio</span></a>
-                                <ul class="collapse list-unstyled list-style-3 show" id="reenvioSubmenu">
-                                    <li class="active selecionado"><a href="#">Reenviar</a></li>
-                                    <li><a href="#">CS. Reenviados</a></li>                                
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#"><i class="icon icon-doc-alerta mr-4"></i> <span class="item-menu">Detalhe de Erro</span></a>
-                            </li>
-                            <li>
-                                <a href="#relatoriosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-prancheta mr-4"></i> <span class="item-menu">Relatórios</span></a>
-                                <ul class="collapse list-unstyled list-style-3" id="relatoriosSubmenu">
-                                    <li><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#asseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-doc-2a-via mr-4"></i> <span class="item-menu">ASSE</span></a>
-                        <ul class="collapse list-unstyled list-style-2" id="asseSubmenu">
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#asseSubmenu-2" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span class="item-menu">4</span></a>
-                                <ul class="collapse list-unstyled list-style-3" id="asseSubmenu-2">
-                                    <li>
-                                        <a href="#">1</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">2</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">3</a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#cobpSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="icon icon-vb-recompensas mr-4"></i> <span class="item-menu">COBP</span></a>
-                        <ul class="collapse list-unstyled list-style-2" id="cobpSubmenu">
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                        </ul>
-                    </li>
-            </ul>
-        </nav>
-
-        <!-- Page Content Holder -->
-        <div id="content">
-            <nav class="navbar navbar-expand-lg">
-                <div class="container-fluid">
-
-                    <button type="button" id="sidebarCollapse" class="navbar-btn">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-				   
-					<!-- <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-align-justify"></i>
-                    </button> -->
-                    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                        </ul>
-                    </div> -->
-                </div>
-            </nav>
-            
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <h4>SCRR</h4>
-                    </div>
-                </div>
-                <div class="clearfix space-2"></div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="bg-blank">
-                            <h6>Reenviar Movimentos</h6>
-                            <form>
-                                <div class="form-row">
-                                    <div class="col-12 col-xl-5 pt-50">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-                                            <label class="form-check-label ml-1" for="inlineRadio1">Por Caso de Comissão</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                            <label class="form-check-label ml-1" for="inlineRadio2">Por Lista de Casos de Comissão</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                                            <label class="form-check-label ml-1" for="inlineRadio2">Sintética</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-xl-7 form">                                        
-                                        <input type="text" name="text" autocomplete="off" required="">
-                                        <label for="text" class="label-name">
-                                            <span class="content-name"><img src="img/key.png" /> GUID <span class="red">*</span></span>
-                                        </label>
-                                    </div>                                    
-                                    <div class="col-12 col-xl-12 pt-50">
-                                        <div class="buttons float-right">                                            
-                                            <button type="button" name="button" class="btn btn-primary">Consultar</button>
-                                            <button type="button" name="button" class="btn btn-three">Reenviar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix space"></div>	
-			</div> <!-- Fim container-fluid -->
+    <main class="page" id="conteudo" tabindex="-1">
+      <nav class="breadcrumb" aria-label="Trilha de navegação">
+        <ol>
+          <li><a href="painel.html">Painel</a></li>
+          <li><a href="reenvio.html" aria-current="page">Reenviar</a></li>
+        </ol>
+      </nav>
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Etapa 4 · Reenvio</p>
+          <h1>Reenviar movimentos</h1>
+          <p>O reenvio passa os movimentos rejeitados pela validação de novo. Antes de confirmar, o CICM mostra quais devem integrar e quais ainda voltariam rejeitados.</p>
         </div>
-    </div>
+      </div>
 
-    <!-- jQuery CDN - Slim version (=without AJAX) -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
+      <div class="stack">
+        <section class="panel" aria-labelledby="passo1">
+          <div class="panel-head">
+            <div>
+              <h2 id="passo1">1. Escolha o que reenviar</h2>
+              <p>Só movimentos rejeitados podem ser reenviados.</p>
+            </div>
+          </div>
+          <form id="selecao" action="reenvio.html" method="get">
+            <div class="panel-body">
+              <fieldset class="segmented-wrap">
+                <legend>Tipo de reenvio</legend>
+                <div class="segmented">
+                  <label><input type="radio" name="modo" value="guid" checked><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-movimentos"></use></svg>Por caso de comissão</label>
+                  <label><input type="radio" name="modo" value="lista"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-lista"></use></svg>Por lista de casos</label>
+                  <label><input type="radio" name="modo" value="sintetica"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-funil"></use></svg>Sintética</label>
+                </div>
+              </fieldset>
 
-    <!-- Popper.JS -->
-    <script src="js/popper.min.js"></script>
+              <div class="form-grid" id="grupo-guid">
+                <div class="field span-6">
+                  <label for="g-guid">GUID <span class="req" aria-hidden="true">*</span></label>
+                  <input class="input mono" id="g-guid" name="guid" required data-rules="guid" data-mask="guid" maxlength="17" autocomplete="off" spellcheck="false" aria-describedby="g-guid-dica">
+                  <p class="hint" id="g-guid-dica">17 caracteres: F, 15 números e uma letra.</p>
+                </div>
+              </div>
 
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap.min.js"></script>
-    
-    <!-- Script Toggle -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
-                $(this).toggleClass('active');
-            });
-        });
-    </script>
-    
-    <!-- Script Tooltip -->
-    <script>
-        jQuery(function() {
-        jQuery('[data-toggle="tooltip"]').tooltip();
-        })
-	</script>
-    
-    <!-- Script Popover -->
-	<script>
-        $(document).ready(function(){
-            $('[data-toggle="popover"]').popover();
-        });
+              <div class="form-grid" id="grupo-lista" hidden>
+                <div class="field span-8">
+                  <label for="l-lista">Lista de GUIDs <span class="req" aria-hidden="true">*</span></label>
+                  <textarea class="textarea" id="l-lista" name="lista" required spellcheck="false" aria-describedby="l-lista-dica" data-label="Lista de GUIDs"></textarea>
+                  <p class="hint" id="l-lista-dica">Cole um GUID por linha, ou separados por vírgula ou espaço. Até 500 de cada vez. Repetidos contam uma vez só.</p>
+                </div>
+              </div>
 
-        $("[data-toggle=popover]")
-        .popover({html:true})
-    </script>
-    
-    <!-- Script Datepicker-->
-    <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.pt-BR.js" charset="UTF-8"></script>
-    <script type="text/javascript">
-       $('.form_date').datetimepicker({
-         language:  'pt-BR',
-         autoclose: 1,
-         minView: 2,
-         format: "dd/mm/yyyy"
-         });
-    </script>
-    <script>
-       // Máscara formato data no campo date 99/99/9999
-       function mascaraData(campo, e){
-         var kC = (document.all) ? event.keyCode : e.keyCode;
-         var data = campo.value;
-         if( kC!=8 && kC!=46 ){
-           if( data.length==2 ){
-             campo.value = data += '/';
-           }else if( data.length==5){
-           campo.value = data += '/';
-         }else
-       campo.value = data;
-       }
-     }
-    </script>
-</body>
+              <div class="form-grid" id="grupo-sintetica" hidden>
+                <div class="field">
+                  <label for="s-ini">Data de início <span class="req" aria-hidden="true">*</span></label>
+                  <input class="input" type="date" id="s-ini" name="ini" required data-label="Data de início">
+                </div>
+                <div class="field">
+                  <label for="s-fim">Data de fim <span class="req" aria-hidden="true">*</span></label>
+                  <input class="input" type="date" id="s-fim" name="fim" required data-label="Data de fim">
+                </div>
+                <div class="field">
+                  <label for="s-cia">Companhia <span class="optional">(opcional)</span></label>
+                  <select class="select" id="s-cia" name="cia"></select>
+                </div>
+                <div class="field">
+                  <label for="s-codigo">Código do erro</label>
+                  <select class="select" id="s-codigo" name="codigo"></select>
+                </div>
+                <div class="field span-12">
+                  <label class="check" for="s-so"><input type="checkbox" id="s-so" name="so" value="1" checked> Trazer só os que devem integrar</label>
+                </div>
+              </div>
+            </div>
+            <div class="panel-foot">
+              <button class="btn" type="reset">Limpar</button>
+              <button class="btn btn-primary" type="submit">
+                Conferir
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-seta"></use></svg>
+              </button>
+            </div>
+          </form>
+        </section>
 
+        <section class="panel" aria-labelledby="passo2" id="conferencia" hidden>
+          <div class="panel-head">
+            <div>
+              <h2 id="passo2" tabindex="-1">2. Confira antes de reenviar</h2>
+              <p id="conf-desc"></p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <dl class="summary-strip" id="conf-totais"></dl>
+          </div>
+          <div id="tabela"></div>
+          <div class="panel-foot">
+            <p class="hint" id="conf-hint"></p>
+            <button class="btn btn-primary" type="button" id="confirmar">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-reenviar"></use></svg>
+              <span>Reenviar</span>
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer" id="rodape"></footer>
+  </body>
 </html>

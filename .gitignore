@@ -1,0 +1,25 @@
+# Sistema operacional
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Dependências e builds locais
+node_modules/
+dist/
+*.log
+
+# Variáveis de ambiente / segredos
+.env
+.env.*
+*.pem
+*.key
+
+# Configurações locais do Claude Code e do webhint
+.claude/
+.hintrc

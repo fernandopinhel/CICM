@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  qualidade:
+    name: Validar HTML e regras da CSP
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: HTMLHint
+        run: npx --yes htmlhint@1 "*.html"
+      - name: Sem scripts ou handlers inline
+        run: |
+          if grep -nE '<script>|<script type="text/javascript">|\son(click|change|input|keydown|load|submit)=' *.html; then
+            echo "::error::Há script ou handler inline. Mova para js/, a CSP bloqueia."
+            exit 1
+          fi
+      - name: Sem estilos inline
+        run: |
+          if grep -nE '\sstyle=|<style' *.html; then
+            echo "::error::Há estilo inline. Mova para css/app.css, a CSP bloqueia."
+            exit 1
+          fi
+      - name: Sem injeção de HTML no JavaScript
+        run: |
+          if grep -rnE '\.(innerHTML|outerHTML)\s*=|insertAdjacentHTML|document\.write|eval\(' js/; then
+            echo "::error::Monte o DOM com createElement e textContent."
+            exit 1
+          fi
+      - name: Sintaxe dos módulos
+        run: for f in js/*.js js/pages/*.js; do node --check "$f" || exit 1; done
+
+  testes:
+    name: Fluxos e acessibilidade (Playwright + axe)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tests
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: tests/package-lock.json
+      - run: npm ci
+      # Usa o Google Chrome que já vem no runner (channel: chrome)
+      - run: npm test

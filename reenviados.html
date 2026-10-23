@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light dark">
+    <title>Reenviados · CICM</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/theme.js"></script>
+    <script type="module" src="js/pages/reenviados.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="topbar" id="topo"></header>
+
+    <main class="page" id="conteudo" tabindex="-1">
+      <nav class="breadcrumb" aria-label="Trilha de navegação">
+        <ol>
+          <li><a href="painel.html">Painel</a></li>
+          <li><a href="reenviados.html" aria-current="page">Reenviados</a></li>
+        </ol>
+      </nav>
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Etapa 5 · Resultado</p>
+          <h1>Consultar reenviados</h1>
+          <p>Cada reenvio gera um protocolo. Acompanhe a revalidação e veja quais movimentos integraram e quais voltaram rejeitados.</p>
+        </div>
+        <div class="page-actions">
+          <a class="btn btn-primary" href="reenvio.html">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-mais"></use></svg>
+            Novo reenvio
+          </a>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div id="aviso-novo"></div>
+
+        <section class="panel" aria-labelledby="filtros-titulo">
+          <div class="panel-head">
+            <h2 id="filtros-titulo">Filtrar reenvios</h2>
+          </div>
+          <form id="filtros" action="reenviados.html" method="get">
+            <div class="panel-body">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="f-data">Data do reenvio <span class="optional">(opcional)</span></label>
+                  <input class="input" type="date" id="f-data" name="data" data-label="Data do reenvio">
+                </div>
+                <div class="field">
+                  <label for="f-status">Situação</label>
+                  <select class="select" id="f-status" name="status">
+                    <option value="">Todas</option>
+                    <option value="processando">Em processamento</option>
+                    <option value="concluido">Concluído</option>
+                    <option value="parcial">Concluído com rejeições</option>
+                    <option value="falhou">Sem sucesso</option>
+                  </select>
+                </div>
+                <div class="field span-6">
+                  <label for="f-busca">Protocolo ou GUID <span class="optional">(opcional)</span></label>
+                  <input class="input mono" id="f-busca" name="busca" autocomplete="off" spellcheck="false" maxlength="17" aria-describedby="f-busca-dica">
+                  <p class="hint" id="f-busca-dica">Com um GUID, aparecem todos os reenvios em que ele entrou.</p>
+                </div>
+              </div>
+            </div>
+            <div class="panel-foot">
+              <button class="btn" type="reset">Limpar</button>
+              <button class="btn btn-primary" type="submit">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-busca"></use></svg>
+                Consultar
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel" aria-labelledby="lista-titulo">
+          <div class="panel-head">
+            <div>
+              <h2 id="lista-titulo">Reenvios</h2>
+              <p id="lista-desc">Do mais recente para o mais antigo.</p>
+            </div>
+          </div>
+          <div id="tabela"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer" id="rodape"></footer>
+  </body>
+</html>
