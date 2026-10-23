@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light dark">
+    <title>Entrar · CICM</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/theme.js"></script>
+    <script type="module" src="js/pages/login.js"></script>
+  </head>
+  <body class="login-body">
+    <a class="skip-link" href="#entrar">Pular para o formulário de entrada</a>
+    <main class="login">
+      <section class="login-art" aria-labelledby="pitch">
+        <span class="brand">
+          <img src="img/favicon.svg" alt="" width="40" height="40">
+          <span class="brand-name"><strong>CICM</strong><span>Central de Comissões · Prumo Seguros</span></span>
+        </span>
+
+        <div class="login-pitch">
+          <h1 id="pitch">Toda comissão no <em>prumo</em>: recebida, conferida e paga certo.</h1>
+          <p>Acompanhe as remessas das companhias, encontre o que foi rejeitado, corrija e reenvie, sem planilha nem chamado.</p>
+        </div>
+
+        <svg class="flow-art" viewBox="0 0 560 220" aria-hidden="true" focusable="false">
+          <path class="rail" d="M64 36 C170 36 190 110 262 110"/>
+          <path class="rail" d="M64 86 C170 86 190 110 262 110"/>
+          <path class="rail" d="M64 136 C170 136 190 110 262 110"/>
+          <path class="rail" d="M64 186 C170 186 190 110 262 110"/>
+          <path class="rail" d="M338 110 C420 110 430 64 500 64"/>
+          <path class="rail" d="M338 110 C420 110 430 160 500 160"/>
+          <path class="pulse" pathLength="400" d="M64 36 C170 36 190 110 262 110"/>
+          <path class="pulse p2" pathLength="400" d="M64 136 C170 136 190 110 262 110"/>
+          <path class="pulse p3" pathLength="400" d="M64 186 C170 186 190 110 262 110"/>
+          <path class="pulse" pathLength="400" d="M338 110 C420 110 430 64 500 64"/>
+          <path class="pulse p2" pathLength="400" d="M338 110 C420 110 430 160 500 160"/>
+          <circle class="node" cx="52" cy="36" r="12"/>
+          <circle class="node" cx="52" cy="86" r="12"/>
+          <circle class="node" cx="52" cy="136" r="12"/>
+          <circle class="node" cx="52" cy="186" r="12"/>
+          <text x="32" y="40" text-anchor="end">101</text>
+          <text x="32" y="90" text-anchor="end">132</text>
+          <text x="32" y="140" text-anchor="end">215</text>
+          <text x="32" y="190" text-anchor="end">348</text>
+          <rect class="node-main" x="262" y="88" width="76" height="44" rx="12"/>
+          <text class="node-label" x="300" y="115" text-anchor="middle">CICM</text>
+          <circle class="node" cx="512" cy="64" r="12"/>
+          <circle class="node" cx="512" cy="160" r="12"/>
+          <text x="512" y="40" text-anchor="middle">Integrado</text>
+          <text x="512" y="192" text-anchor="middle">Corrigir e reenviar</text>
+        </svg>
+
+        <small>Protótipo de portfólio. Prumo Seguros é uma marca fictícia e todos os dados são de exemplo.</small>
+      </section>
+
+      <section class="login-form-wrap" aria-labelledby="entrar-titulo">
+        <div class="login-form">
+          <h2 id="entrar-titulo">Entrar</h2>
+          <p>Use sua matrícula e a senha da rede.</p>
+          <div id="login-aviso"></div>
+
+          <form id="entrar" action="painel.html" method="get">
+            <div class="field">
+              <label for="matricula">Matrícula</label>
+              <input class="input" id="matricula" name="matricula" inputmode="numeric" autocomplete="username" required maxlength="7" data-mask="digits" aria-describedby="matricula-dica">
+              <p class="hint" id="matricula-dica">7 números, sem pontos.</p>
+            </div>
+            <div class="field">
+              <label for="senha">Senha</label>
+              <div class="pass-wrap">
+                <input class="input" type="password" id="senha" name="senha" autocomplete="current-password" required>
+                <button type="button" class="btn btn-ghost btn-icon" id="ver-senha" aria-pressed="false" aria-label="Mostrar senha">
+                  <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-olho"></use></svg>
+                </button>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Entrar</button>
+            <p class="divider">ou</p>
+            <button class="btn btn-block" type="button" id="demo">Usar o acesso de demonstração</button>
+          </form>
+
+          <div class="notice notice-info disclaimer">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-info"></use></svg>
+            <div>Não há autenticação real. Qualquer matrícula com 7 números e senha com 4 caracteres ou mais entra como <strong>Marina Couto</strong>, analista de comissões fictícia.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

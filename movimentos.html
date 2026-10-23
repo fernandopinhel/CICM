@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light dark">
+    <title>Movimentos · CICM</title>
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/theme.js"></script>
+    <script type="module" src="js/pages/movimentos.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <header class="topbar" id="topo"></header>
+
+    <main class="page" id="conteudo" tabindex="-1">
+      <nav class="breadcrumb" aria-label="Trilha de navegação">
+        <ol>
+          <li><a href="painel.html">Painel</a></li>
+          <li><a href="movimentos.html" aria-current="page">Movimentos</a></li>
+        </ol>
+      </nav>
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Etapa 2 · Conferência</p>
+          <h1>Consultar movimentos</h1>
+          <p>Um movimento é a comissão de uma parcela de apólice. Busque um caso específico ou faça uma consulta sintética por período.</p>
+        </div>
+      </div>
+
+      <div class="stack">
+        <section class="panel" aria-labelledby="filtros-titulo">
+          <div class="panel-head">
+            <h2 id="filtros-titulo">O que você procura?</h2>
+          </div>
+          <form id="filtros" action="movimentos.html" method="get">
+            <div class="panel-body">
+              <fieldset class="segmented-wrap">
+                <legend>Tipo de consulta</legend>
+                <div class="segmented">
+                  <label><input type="radio" name="tipo" value="caso" checked><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-lista"></use></svg>Por caso de comissão</label>
+                  <label><input type="radio" name="tipo" value="sintetica"><svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-funil"></use></svg>Sintética</label>
+                </div>
+              </fieldset>
+
+              <div class="form-grid" id="grupo-caso">
+                <div class="field span-4">
+                  <label for="c-cia">Companhia <span class="req" aria-hidden="true">*</span></label>
+                  <select class="select" id="c-cia" name="cia" required></select>
+                </div>
+                <div class="field span-4">
+                  <label for="c-suc">Sucursal <span class="req" aria-hidden="true">*</span></label>
+                  <select class="select" id="c-suc" name="suc" required></select>
+                </div>
+                <div class="field span-4">
+                  <label for="c-ramo">Ramo <span class="req" aria-hidden="true">*</span></label>
+                  <select class="select" id="c-ramo" name="ramo" required aria-describedby="c-ramo-dica"></select>
+                  <p class="hint" id="c-ramo-dica">Os ramos mudam conforme a companhia.</p>
+                </div>
+                <div class="field span-4">
+                  <label for="c-apolice">Apólice <span class="req" aria-hidden="true">*</span></label>
+                  <input class="input mono" id="c-apolice" name="apolice" required inputmode="numeric" maxlength="10" data-mask="digits" autocomplete="off" aria-describedby="c-apolice-dica">
+                  <p class="hint" id="c-apolice-dica">10 números. Começa com o código da companhia.</p>
+                </div>
+                <div class="field span-4">
+                  <label for="c-endosso">Endosso <span class="optional">(opcional)</span></label>
+                  <input class="input mono" id="c-endosso" name="endosso" inputmode="numeric" maxlength="3" data-mask="digits" autocomplete="off">
+                </div>
+                <div class="field span-4">
+                  <label for="c-parcela">Parcela <span class="optional">(opcional)</span></label>
+                  <input class="input mono" id="c-parcela" name="parcela" inputmode="numeric" maxlength="2" data-mask="digits" autocomplete="off">
+                </div>
+              </div>
+
+              <div class="form-grid" id="grupo-sintetica" hidden>
+                <div class="field">
+                  <label for="s-ini">Data de início <span class="req" aria-hidden="true">*</span></label>
+                  <input class="input" type="date" id="s-ini" name="ini" required data-label="Data de início">
+                </div>
+                <div class="field">
+                  <label for="s-fim">Data de fim <span class="req" aria-hidden="true">*</span></label>
+                  <input class="input" type="date" id="s-fim" name="fim" required data-label="Data de fim">
+                </div>
+                <div class="field">
+                  <label for="s-cia">Companhia <span class="optional">(opcional)</span></label>
+                  <select class="select" id="s-cia" name="scia"></select>
+                </div>
+                <div class="field">
+                  <label for="s-status">Situação</label>
+                  <select class="select" id="s-status" name="status">
+                    <option value="">Todas</option>
+                    <option value="rejeitado">Rejeitado</option>
+                    <option value="processando">Em reenvio</option>
+                    <option value="integrado">Integrado</option>
+                    <option value="descartado">Descartado</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="s-nat">Natureza</label>
+                  <select class="select" id="s-nat" name="nat"></select>
+                </div>
+                <div class="field span-6">
+                  <label for="s-corretor">Corretor</label>
+                  <select class="select" id="s-corretor" name="corretor"></select>
+                </div>
+                <div class="field">
+                  <label for="s-remessa">Remessa <span class="optional">(opcional)</span></label>
+                  <input class="input mono" id="s-remessa" name="remessa" inputmode="numeric" maxlength="6" data-mask="digits" autocomplete="off">
+                </div>
+              </div>
+            </div>
+            <div class="panel-foot">
+              <button class="btn btn-ghost" type="button" id="exemplo">Preencher com um caso de exemplo</button>
+              <button class="btn" type="reset">Limpar</button>
+              <button class="btn btn-primary" type="submit">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="img/icons.svg#i-busca"></use></svg>
+                Consultar
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel" aria-labelledby="lista-titulo">
+          <div class="panel-head">
+            <div>
+              <h2 id="lista-titulo">Movimentos encontrados</h2>
+              <p id="lista-desc">Faça uma consulta para ver os movimentos.</p>
+            </div>
+          </div>
+          <div id="tabela"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer" id="rodape"></footer>
+  </body>
+</html>

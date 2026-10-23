@@ -1,0 +1,17 @@
+{
+  "name": "cicm-testes",
+  "private": true,
+  "description": "Testes de fluxo e de acessibilidade do protótipo CICM. O site em si não tem dependências.",
+  "type": "module",
+  "scripts": {
+    "servir": "node serve.mjs",
+    "fluxos": "node run.mjs e2e.mjs",
+    "a11y": "node run.mjs a11y.mjs",
+    "capturas": "node run.mjs capture.mjs",
+    "test": "node run.mjs e2e.mjs a11y.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.0",
+    "playwright": "1.59.1"
+  }
+}
