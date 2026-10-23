@@ -8,6 +8,10 @@ const browser = await chromium.launch({ channel: process.env.PW_CHANNEL || 'chro
 let total = 0;
 
 async function audit(page, label) {
+  // Mede o estado final: espera as animações de entrada (diálogos, gavetas) terminarem
+  await page.evaluate(() => Promise.all(document.getAnimations()
+    .filter((a) => a.effect?.getTiming().iterations !== Infinity)
+    .map((a) => a.finished.catch(() => {}))));
   const r = await new AxeBuilder({ page }).withTags(TAGS).analyze();
   total += r.violations.length;
   const v = r.violations.map((x) => `${x.id} (${x.nodes.length}): ${x.nodes.slice(0, 2).map((n) => n.target.join(' ')).join(', ')}`);
@@ -16,7 +20,7 @@ async function audit(page, label) {
 
 for (const scheme of ['light', 'dark']) {
   for (const vw of [1440, 390]) {
-    const ctx = await browser.newContext({ viewport: { width: vw, height: 900 }, colorScheme: scheme });
+    const ctx = await browser.newContext({ viewport: { width: vw, height: 900 }, colorScheme: scheme, reducedMotion: 'reduce' });
     const page = await ctx.newPage();
     const tag = `[${scheme} ${vw}]`;
     await page.goto(BASE + 'login.html');
